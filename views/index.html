@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aplicación Web CRUD Simple</title>
+  <script>
+    async function createItem() {
+      const name = document.getElementById('itemName').value;
+      const response = await fetch('/api/items', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ name })
+      });
+      const item = await response.json();
+      alert(`Item creado: ${item.name} con ID: ${item.id}`);
+    }
+
+    async function getItems() {
+      const response = await fetch('/api/items');
+      const items = await response.json();
+      alert(`Items: ${JSON.stringify(items)}`);
+    }
+
+    async function getItem() {
+      const id = document.getElementById('itemId').value;
+      const response = await fetch(`/api/items/${id}`);
+      if (response.ok) {
+        const item = await response.json();
+        alert(`Item: ${JSON.stringify(item)}`);
+      } else {
+        alert('Ítem no encontrado');
+      }
+    }
+
+    async function updateItem() {
+      const id = document.getElementById('itemId').value;
+      const name = document.getElementById('itemName').value;
+      const response = await fetch(`/api/items/${id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ name })
+      });
+      if (response.ok) {
+        const item = await response.json();
+        alert(`Item actualizado: ${JSON.stringify(item)}`);
+      } else {
+        alert('Ítem no encontrado');
+      }
+    }
+
+    async function deleteItem() {
+      const id = document.getElementById('itemId').value;
+      const response = await fetch(`/api/items/${id}`, {
+        method: 'DELETE'
+      });
+      if (response.ok) {
+        alert('Ítem eliminado');
+      } else {
+        alert('Ítem no encontrado');
+      }
+    }
+  </script>
+</head>
+<body>
+  <h1>Aplicación Web CRUD Simple</h1>
+  <form onsubmit="event.preventDefault();">
+    <label for="itemName">Nombre del Ítem:</label>
+    <input type="text" id="itemName" name="itemName" required>
+    <label for="itemId">ID del Ítem (para obtener, actualizar o eliminar):</label>
+    <input type="text" id="itemId" name="itemId">
+    <br>
+    <button onclick="createItem()">Crear Ítem</button>
+    <button onclick="getItems()">Obtener Todos los Ítems</button>
+    <button onclick="getItem()">Obtener Ítem</button>
+    <button onclick="updateItem()">Actualizar Ítem</button>
+    <button onclick="deleteItem()">Eliminar Ítem</button>
+  </form>
+</body>
+</html>

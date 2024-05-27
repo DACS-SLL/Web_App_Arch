@@ -3,23 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aplicación Web CRUD Simple</title>
+  <title>Centro de Convenciones</title>
   <link rel="stylesheet" href="styles.css">
   <script src="scripts.js" defer></script>
 </head>
 <body>
-  <h1>Aplicación Web CRUD Simple</h1>
+  <h1>Registro de asistencia</h1>
   <form onsubmit="event.preventDefault();">
-    <label for="itemName">Nombre del Ítem:</label>
+    <label for="itemName">Nombre del empleado:</label>
     <input type="text" id="itemName" name="itemName" required>
-    <label for="itemId">ID del Ítem (para obtener, actualizar o eliminar):</label>
+    <label for="itemId">ID del empleado (para obtener, actualizar o eliminar):</label>
     <input type="text" id="itemId" name="itemId">
     <br>
-    <button onclick="createItem()">Crear Ítem</button>
-    <button onclick="getItems()">Obtener Todos los Ítems</button>
-    <button onclick="getItem()">Obtener Ítem</button>
-    <button onclick="updateItem()">Actualizar Ítem</button>
-    <button onclick="deleteItem()">Eliminar Ítem</button>
+    <button onclick="createItem()">Crear empleado</button>
+    <button onclick="getItems()">Obtener Todos los empleados</button>
+    <button onclick="getItem()">Obtener item del empleado</button>
+    <button onclick="updateItem()">Actualizar empleado</button>
+    <button onclick="deleteItem()">Eliminar empleado</button>
   </form>
+
+  <h2>Empleados Registrados</h2>
+  
+  
 </body>
 </html>

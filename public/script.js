@@ -14,7 +14,8 @@ async function createItem() {
   async function getItems() {
     const response = await fetch('/api/items');
     const items = await response.json();
-    alert(`Empleados registrados: \n${JSON.stringify(items)}`);
+    localStorage.setItem('employees', JSON.stringify(items));
+    window.location.href = '/empleado.html';
   }
   
   async function getItem() {
@@ -22,7 +23,7 @@ async function createItem() {
     const response = await fetch(`/api/items/${id}`);
     if (response.ok) {
       const item = await response.json();
-      alert(`Empleado: ${JSON.stringify(item)}`);
+      window.location.href = `/empleado.html?id=${item.id}`;
     } else {
       alert('Dato no encontrado');
     }
@@ -57,4 +58,5 @@ async function createItem() {
       alert('Dato no encontrado');
     }
   }
+  
   

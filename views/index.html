@@ -3,27 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title style="font-family: Arial Black, sans-serif;">Centro de Convenciones</title>
+  <title>Centro de convenciones</title>
   <link rel="stylesheet" href="styles.css">
   <script src="scripts.js" defer></script>
 </head>
 <body>
-  <h1>Registro de asistencia</h1>
+  <h1>Centro de convenciones</h1>
+  <h2>Registro de Empleados</h2>
   <form onsubmit="event.preventDefault();">
-    <label for="itemName">Nombre del empleado:</label>
+    <label for="itemName">Nombre del Empleado:</label>
     <input type="text" id="itemName" name="itemName" required>
-    <label for="itemId">ID del empleado (para obtener, actualizar o eliminar):</label>
+    <label for="itemId">ID del Empleado (para obtener, actualizar o eliminar):</label>
     <input type="text" id="itemId" name="itemId">
     <br>
-    <button onclick="createItem()">Crear empleado</button>
-    <button onclick="getItems()">Obtener Todos los empleados</button>
-    <button onclick="getItem()">Obtener item del empleado</button>
-    <button onclick="updateItem()">Actualizar empleado</button>
-    <button onclick="deleteItem()">Eliminar empleado</button>
+    <button onclick="createItem()">Crear Empleado</button>
+    <button onclick="getItems()">Obtener Todos los Empleados</button>
+    <button onclick="getItem()">Obtener Empleado</button>
+    <button onclick="updateItem()">Actualizar Empleado</button>
+    <button onclick="deleteItem()">Eliminar Empleado</button>
   </form>
-
-  <h2>Empleados Registrados</h2>
-  
-  
 </body>
 </html>

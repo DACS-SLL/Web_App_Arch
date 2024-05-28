@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aplicación Web CRUD Simple</title>
+  <title>Centro de convenciones</title>
+  <link rel="stylesheet" href="styles.css">
   <script>
     async function createItem() {
       const name = document.getElementById('itemName').value;
@@ -15,13 +16,13 @@
         body: JSON.stringify({ name })
       });
       const item = await response.json();
-      alert(`Item creado: ${item.name} con ID: ${item.id}`);
+      alert(`Asistencia creada \nNombre: ${item.name} con ID: ${item.id}`);
     }
 
     async function getItems() {
       const response = await fetch('/api/items');
       const items = await response.json();
-      alert(`Items: ${JSON.stringify(items)}`);
+      alert(`Empleados registrados: \n${JSON.stringify(items)}`);
     }
 
     async function getItem() {
@@ -29,9 +30,9 @@
       const response = await fetch(`/api/items/${id}`);
       if (response.ok) {
         const item = await response.json();
-        alert(`Item: ${JSON.stringify(item)}`);
+        alert(`Empleado: ${JSON.stringify(item)}`);
       } else {
-        alert('Ítem no encontrado');
+        alert('Dato no encontrado');
       }
     }
 
@@ -47,9 +48,9 @@
       });
       if (response.ok) {
         const item = await response.json();
-        alert(`Item actualizado: ${JSON.stringify(item)}`);
+        alert(`Empleado actualizado: ${JSON.stringify(item)}`);
       } else {
-        alert('Ítem no encontrado');
+        alert('Dato no encontrado');
       }
     }
 
@@ -59,26 +60,42 @@
         method: 'DELETE'
       });
       if (response.ok) {
-        alert('Ítem eliminado');
+        alert('Empleado eliminado');
       } else {
-        alert('Ítem no encontrado');
+        alert('Dato no encontrado');
       }
     }
   </script>
 </head>
 <body>
-  <h1>Aplicación Web CRUD Simple</h1>
-  <form onsubmit="event.preventDefault();">
-    <label for="itemName">Nombre del Ítem:</label>
-    <input type="text" id="itemName" name="itemName" required>
-    <label for="itemId">ID del Ítem (para obtener, actualizar o eliminar):</label>
-    <input type="text" id="itemId" name="itemId">
-    <br>
-    <button onclick="createItem()">Crear Ítem</button>
-    <button onclick="getItems()">Obtener Todos los Ítems</button>
-    <button onclick="getItem()">Obtener Ítem</button>
-    <button onclick="updateItem()">Actualizar Ítem</button>
-    <button onclick="deleteItem()">Eliminar Ítem</button>
-  </form>
+  <img src="imagenizquierda1.png" alt="Imagen Lateral" class="side-image">
+  <div class="main-content">
+    <div class="container">
+      <h1>Registro de Asistencia de Empleados</h1>
+      <form onsubmit="event.preventDefault();">
+
+        <div class="form-group">
+          <label for="itemName">Nombre del Empleado:</label>
+          <input type="text" id="itemName" name="itemName" required>
+        </div>
+    
+        <div class="form-group">
+          <label for="itemId">ID del Empleado (para buscar, actualizar o eliminar datos):</label>
+          <input type="text" id="itemId" name="itemId">
+          <br>
+        </div>
+    
+        <div class="button-group">
+          <button onclick="createItem()">Crear Asistencia</button>
+          <button onclick="getItems()">Obtener Todos los Empleados registrados</button>
+          <button onclick="getItem()">Obtener Empleado</button>
+          <button onclick="updateItem()">Actualizar Empleado</button>
+          <button onclick="deleteItem()">Eliminar Empleado</button> 
+        </div>
+    
+      </form>
+    </div>
+  </div>
+  <img src="3590logoCerroJuli.png" alt="Logo" class="logo">
 </body>
 </html>
